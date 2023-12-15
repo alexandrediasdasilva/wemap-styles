@@ -14,8 +14,22 @@
     {
       "id": "background",
       "type": "background",
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
-        "background-color": "#F5F3F3"
+        "background-color": {
+          "stops": [
+            [
+              5,
+              "#E8EBCC"
+            ],
+            [
+              8,
+              "#ECE7E1"
+            ]
+          ]
+        }
       }
     },
     {
@@ -24,33 +38,31 @@
       "source": "composite",
       "source-layer": "water",
       "paint": {
-        "fill-color": "#B3BFDD"
+        "fill-color": "#75CFF0"
       }
     },
     {
       "id": "landuse_overlay_national_park",
       "type": "fill",
-      "metadata": {
-        "mapbox:group": "1444849388993.3071"
-      },
       "source": "composite",
       "source-layer": "landuse_overlay",
+      "minzoom": 8,
       "filter": [
         "==",
         "class",
         "national_park"
       ],
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
-        "fill-color": "#d8e8c8",
-        "fill-opacity": 0.75
+        "fill-color": "#B6E59E",
+        "fill-opacity": 1
       }
     },
     {
       "id": "landuse_park",
       "type": "fill",
-      "metadata": {
-        "mapbox:group": "1444849388993.3071"
-      },
       "source": "composite",
       "source-layer": "landuse",
       "filter": [
@@ -58,26 +70,11 @@
         "class",
         "park"
       ],
-      "paint": {
-        "fill-color": "rgb(192,222,186)"
-      }
-    },
-    {
-      "id": "landuse_wood",
-      "type": "fill",
-      "metadata": {
-        "mapbox:group": "1444849388993.3071"
+      "layout": {
+        "visibility": "visible"
       },
-      "source": "composite",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        "class",
-        "wood"
-      ],
       "paint": {
-        "fill-color": "#6a4",
-        "fill-opacity": 0.1
+        "fill-color": "#B6E59E"
       }
     },
     {
@@ -91,7 +88,7 @@
         "pitch"
       ],
       "paint": {
-        "fill-color": "rgba(122, 207, 97, 1)"
+        "fill-color": "#AAE08F"
       }
     },
     {
@@ -135,95 +132,8 @@
       "source": "composite",
       "source-layer": "building",
       "paint": {
-        "fill-color": {
-          "base": 1,
-          "stops": [
-            [
-              15.5,
-              "#f2eae2"
-            ],
-            [
-              16,
-              "#dfdbd7"
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "ffbb_transport",
-      "type": "symbol",
-      "source": "composite",
-      "source-layer": "poi_label",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "Bus Station",
-          "Parking",
-          "Train Station",
-          "Bus Stop"
-        ]
-      ],
-      "layout": {
-        "icon-image": "{maki}-11",
-        "text-font": [
-          "Open_Sans_Semibold"
-        ],
-        "text-field": "{name_fr}",
-        "text-max-width": 9,
-        "text-padding": 2,
-        "text-offset": [
-          0,
-          0.6
-        ],
-        "text-anchor": "top",
-        "text-size": 12
-      },
-      "paint": {
-        "text-color": "#969595",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1,
-        "text-halo-blur": 0.5
-      }
-    },
-    {
-      "id": "ffbb_amenities",
-      "type": "symbol",
-      "source": "composite",
-      "source-layer": "poi_label",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "Stadium",
-          "Sports Centre"
-        ]
-      ],
-      "layout": {
-        "icon-image": "{maki}-11",
-        "text-font": [
-          "Open_Sans_Semibold"
-        ],
-        "text-field": "{name_fr}",
-        "text-max-width": 9,
-        "text-padding": 2,
-        "text-offset": [
-          0,
-          0.6
-        ],
-        "text-anchor": "top",
-        "text-size": 12
-      },
-      "paint": {
-        "text-color": "#969595",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1,
-        "text-halo-blur": 0.5
+        "fill-color": "#DCD9D6",
+        "fill-outline-color": "#CDCAC6"
       }
     },
     {
@@ -234,6 +144,7 @@
       },
       "source": "composite",
       "source-layer": "road",
+      "minzoom": 8,
       "filter": [
         "all",
         [
@@ -255,16 +166,12 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsl(0, 0%, 87%)",
+        "line-color": "#D6D9E6",
         "line-width": {
           "base": 1.2,
           "stops": [
             [
-              5,
-              0.4
-            ],
-            [
-              6,
+              1,
               0.6
             ],
             [
@@ -309,13 +216,13 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsl(0, 0%, 100%)",
+        "line-color": "#fff",
         "line-width": {
           "base": 1.2,
           "stops": [
             [
               6.5,
-              0
+              1
             ],
             [
               7,
@@ -327,6 +234,226 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "road_secondary_tertiary_casing",
+      "type": "line",
+      "source": "composite",
+      "source-layer": "road",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        [
+          "!in",
+          "structure",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "secondary",
+          "tertiary"
+        ]
+      ],
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "miter",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#D6D9E6",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              8,
+              1.5
+            ],
+            [
+              20,
+              17
+            ]
+          ]
+        },
+        "line-opacity": 1
+      }
+    },
+    {
+      "id": "road_secondary_tertiary",
+      "type": "line",
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "!in",
+          "structure",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "secondary",
+          "tertiary"
+        ]
+      ],
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "miter",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#FFF",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              6.5,
+              0
+            ],
+            [
+              8,
+              0.5
+            ],
+            [
+              20,
+              13
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "road_street_casing",
+      "type": "line",
+      "metadata": {
+        "mapbox:group": "1444849345966.4436"
+      },
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "all",
+          [
+            "!in",
+            "structure",
+            "bridge",
+            "tunnel"
+          ],
+          [
+            "in",
+            "class",
+            "street",
+            "street_limited"
+          ]
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#D6D9E6",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              12,
+              0.5
+            ],
+            [
+              13,
+              1
+            ],
+            [
+              14,
+              4
+            ],
+            [
+              20,
+              15
+            ]
+          ]
+        },
+        "line-opacity": {
+          "stops": [
+            [
+              12,
+              0
+            ],
+            [
+              12.5,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "road_street",
+      "type": "line",
+      "metadata": {
+        "mapbox:group": "1444849345966.4436"
+      },
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "all",
+          [
+            "!in",
+            "structure",
+            "bridge",
+            "tunnel"
+          ],
+          [
+            "in",
+            "class",
+            "street",
+            "street_limited"
+          ]
+        ]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#fff",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              13.5,
+              0
+            ],
+            [
+              14,
+              2.5
+            ],
+            [
+              20,
+              11.5
+            ]
+          ]
+        },
+        "line-opacity": 1
       }
     },
     {
@@ -363,20 +490,20 @@
         "symbol-placement": "line",
         "text-pitch-alignment": "map",
         "text-keep-upright": true,
-        "text-field": "{name_fr}"
+        "text-field": "{name_fr}",
+        "icon-allow-overlap": false,
+        "text-letter-spacing": 0.025
       },
       "paint": {
-        "text-color": "hsl(0, 0%, 35%)",
-        "text-halo-width": 1,
-        "text-halo-blur": 0.5
+        "text-color": "#4D4D4D",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#FFF",
+        "text-halo-width": 1
       }
     },
     {
       "id": "place_label_city",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "1444849272561.29"
-      },
       "source": "composite",
       "source-layer": "place_label",
       "filter": [
@@ -394,8 +521,7 @@
       ],
       "layout": {
         "text-font": [
-          "Open_Sans_Bold",
-          "Open_Sans_Regular"
+          "Open_Sans_Semibold"
         ],
         "text-field": "{name_fr}",
         "text-max-width": 9,
@@ -411,11 +537,13 @@
               20
             ]
           ]
-        }
+        },
+        "text-letter-spacing": 0.025,
+        "visibility": "visible"
       },
       "paint": {
-        "text-color": "#444",
-        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-color": "#0B0B1A",
+        "text-halo-color": "#FFFFFF",
         "text-halo-width": 1.2
       }
     },
@@ -442,8 +570,7 @@
       ],
       "layout": {
         "text-font": [
-          "Open_Sans_Bold",
-          "Open_Sans_Regular"
+          "Open_Sans_Semibold"
         ],
         "text-field": "{name_fr}",
         "text-max-width": 10,
@@ -462,17 +589,14 @@
         }
       },
       "paint": {
-        "text-color": "#444",
-        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-color": "#0B0B1A",
+        "text-halo-color": "#FFFFFF",
         "text-halo-width": 1.2
       }
     },
     {
       "id": "place_label_town",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "1444849272561.29"
-      },
       "source": "composite",
       "source-layer": "place_label",
       "minzoom": 7,
@@ -483,8 +607,7 @@
       ],
       "layout": {
         "text-font": [
-          "Open_Sans_Regular",
-          "Open_Sans_Regular"
+          "Open_Sans_Semibold"
         ],
         "text-field": "{name_fr}",
         "text-max-width": 8,
@@ -497,23 +620,21 @@
             ],
             [
               15,
-              24
+              22
             ]
           ]
-        }
+        },
+        "text-letter-spacing": 0.025
       },
       "paint": {
-        "text-color": "#333",
-        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-color": "#0B0B1A",
+        "text-halo-color": "#FFFFFF",
         "text-halo-width": 1.2
       }
     },
     {
       "id": "place_label_other",
       "type": "symbol",
-      "metadata": {
-        "mapbox:group": "1444849272561.29"
-      },
       "source": "composite",
       "source-layer": "place_label",
       "filter": [
@@ -525,11 +646,10 @@
       ],
       "layout": {
         "text-font": [
-          "Open_Sans_Bold",
-          "Open_Sans_Regular"
+          "Open_Sans_Semibold"
         ],
         "text-transform": "uppercase",
-        "text-letter-spacing": 0.1,
+        "text-letter-spacing": 0.15,
         "text-field": "{name_fr}",
         "text-max-width": 9,
         "text-size": {
@@ -548,9 +668,95 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "hsl(214, 27%, 42%)",
-        "text-halo-color": "rgba(255,255,255,0.8)",
-        "text-halo-width": 1.2
+        "text-halo-color": "#FFFFFF",
+        "text-halo-width": 1.2,
+        "text-color": "#4D557D"
+      }
+    },
+    {
+      "id": "ffbb_transport",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "poi_label",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "Bus Station",
+          "Parking",
+          "Train Station",
+          "Bus Stop"
+        ]
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12,
+        "icon-optional": false,
+        "visibility": "visible",
+        "icon-size": 1,
+        "icon-ignore-placement": false,
+        "icon-keep-upright": false,
+        "icon-text-fit": "none",
+        "icon-rotation-alignment": "auto"
+      },
+      "paint": {
+        "text-color": "#475BCC",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0.5,
+        "icon-color": "#475BCC",
+        "text-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "ffbb_amenities",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "poi_label",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "Stadium",
+          "Sports Centre",
+          "Pitch"
+        ]
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#847263",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0
       }
     }
   ],
