@@ -1,0 +1,558 @@
+{
+  "version": 8,
+  "name": "FFBB-Wemap-Style",
+  "metadata": {},
+  "sources": {
+    "composite": {
+      "url": "https://vector.getwemap.com/data/osm2vectortiles.json",
+      "type": "vector"
+    }
+  },
+  "sprite": "https://vector.getwemap.com/styles/wemap-v1-fr/sprite",
+  "glyphs": "https://vector.getwemap.com/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#F5F3F3"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#B3BFDD"
+      }
+    },
+    {
+      "id": "landuse_overlay_national_park",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
+      "source": "composite",
+      "source-layer": "landuse_overlay",
+      "filter": [
+        "==",
+        "class",
+        "national_park"
+      ],
+      "paint": {
+        "fill-color": "#d8e8c8",
+        "fill-opacity": 0.75
+      }
+    },
+    {
+      "id": "landuse_park",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
+      "source": "composite",
+      "source-layer": "landuse",
+      "filter": [
+        "==",
+        "class",
+        "park"
+      ],
+      "paint": {
+        "fill-color": "rgb(192,222,186)"
+      }
+    },
+    {
+      "id": "landuse_wood",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
+      "source": "composite",
+      "source-layer": "landuse",
+      "filter": [
+        "==",
+        "class",
+        "wood"
+      ],
+      "paint": {
+        "fill-color": "#6a4",
+        "fill-opacity": 0.1
+      }
+    },
+    {
+      "id": "ffbb_landuse",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "landuse",
+      "filter": [
+        "==",
+        "class",
+        "pitch"
+      ],
+      "paint": {
+        "fill-color": "rgba(122, 207, 97, 1)"
+      }
+    },
+    {
+      "id": "railstation",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "rail_station_label",
+      "filter": [
+        "!=",
+        "network",
+        "entrance"
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#969595",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0.5
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849364238.8171"
+      },
+      "source": "composite",
+      "source-layer": "building",
+      "paint": {
+        "fill-color": {
+          "base": 1,
+          "stops": [
+            [
+              15.5,
+              "#f2eae2"
+            ],
+            [
+              16,
+              "#dfdbd7"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ffbb_transport",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "poi_label",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "Bus Station",
+          "Parking",
+          "Train Station",
+          "Bus Stop"
+        ]
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#969595",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0.5
+      }
+    },
+    {
+      "id": "ffbb_amenities",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "poi_label",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "Stadium",
+          "Sports Centre"
+        ]
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#969595",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0.5
+      }
+    },
+    {
+      "id": "road_trunk_primary_casing",
+      "type": "line",
+      "metadata": {
+        "mapbox:group": "1444849345966.4436"
+      },
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "!in",
+          "structure",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "primary",
+          "trunk"
+        ]
+      ],
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "miter",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(0, 0%, 87%)",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              5,
+              0.4
+            ],
+            [
+              6,
+              0.6
+            ],
+            [
+              7,
+              1.5
+            ],
+            [
+              20,
+              22
+            ]
+          ]
+        },
+        "line-opacity": 1
+      }
+    },
+    {
+      "id": "road_trunk_primary",
+      "type": "line",
+      "metadata": {
+        "mapbox:group": "1444849345966.4436"
+      },
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "!in",
+          "structure",
+          "bridge",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "primary",
+          "trunk"
+        ]
+      ],
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "miter",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(0, 0%, 100%)",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              6.5,
+              0
+            ],
+            [
+              7,
+              0.5
+            ],
+            [
+              20,
+              18
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "road_labels",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "road_label",
+      "filter": [
+        "!=",
+        "class",
+        "ferry"
+      ],
+      "layout": {
+        "text-size": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              12
+            ],
+            [
+              14,
+              13
+            ]
+          ]
+        },
+        "text-allow-overlap": false,
+        "symbol-avoid-edges": false,
+        "text-ignore-placement": false,
+        "text-font": [
+          "Open_Sans_Regular",
+          "Open_Sans_Regular"
+        ],
+        "symbol-placement": "line",
+        "text-pitch-alignment": "map",
+        "text-keep-upright": true,
+        "text-field": "{name_fr}"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 35%)",
+        "text-halo-width": 1,
+        "text-halo-blur": 0.5
+      }
+    },
+    {
+      "id": "place_label_city",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1444849272561.29"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "city"
+        ],
+        [
+          "!=",
+          "name_fr",
+          "Paris"
+        ]
+      ],
+      "layout": {
+        "text-font": [
+          "Open_Sans_Bold",
+          "Open_Sans_Regular"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              7,
+              12
+            ],
+            [
+              11,
+              20
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "#444",
+        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-halo-width": 1.2
+      }
+    },
+    {
+      "id": "place_label_city_Paris",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1444849272561.29"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "city"
+        ],
+        [
+          "==",
+          "name_fr",
+          "Paris"
+        ]
+      ],
+      "layout": {
+        "text-font": [
+          "Open_Sans_Bold",
+          "Open_Sans_Regular"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 10,
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              7,
+              14
+            ],
+            [
+              11,
+              24
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "#444",
+        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-halo-width": 1.2
+      }
+    },
+    {
+      "id": "place_label_town",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1444849272561.29"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "minzoom": 7,
+      "filter": [
+        "in",
+        "type",
+        "town"
+      ],
+      "layout": {
+        "text-font": [
+          "Open_Sans_Regular",
+          "Open_Sans_Regular"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 8,
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              10,
+              14
+            ],
+            [
+              15,
+              24
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "#333",
+        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-halo-width": 1.2
+      }
+    },
+    {
+      "id": "place_label_other",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1444849272561.29"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "filter": [
+        "in",
+        "type",
+        "island",
+        "islet",
+        "suburb"
+      ],
+      "layout": {
+        "text-font": [
+          "Open_Sans_Bold",
+          "Open_Sans_Regular"
+        ],
+        "text-transform": "uppercase",
+        "text-letter-spacing": 0.1,
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              15,
+              18
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(214, 27%, 42%)",
+        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-halo-width": 1.2
+      }
+    }
+  ],
+  "id": "vuaufksmx"
+}
