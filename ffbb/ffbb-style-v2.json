@@ -38,7 +38,19 @@
       "source": "composite",
       "source-layer": "water",
       "paint": {
-        "fill-color": "#75CFF0"
+        "fill-color": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          "hsla(196, 80%, 70%, 1)",
+          12,
+          "hsla(196, 0%, 70%, 1)"
+        ]
       }
     },
     {
