@@ -54,7 +54,7 @@
       }
     },
     {
-      "id": "landuse_overlay_national_park",
+      "id": "national_park",
       "type": "fill",
       "source": "composite",
       "source-layer": "landuse_overlay",
@@ -84,7 +84,7 @@
       }
     },
     {
-      "id": "landuse_park",
+      "id": "park",
       "type": "fill",
       "source": "composite",
       "source-layer": "landuse",
@@ -112,7 +112,7 @@
       }
     },
     {
-      "id": "ffbb_landuse",
+      "id": "pitch",
       "type": "fill",
       "source": "composite",
       "source-layer": "landuse",
@@ -135,6 +135,9 @@
       },
       "source": "composite",
       "source-layer": "building",
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
         "fill-color": {
           "stops": [
@@ -609,38 +612,6 @@
       }
     },
     {
-      "id": "railstation",
-      "type": "symbol",
-      "source": "composite",
-      "source-layer": "rail_station_label",
-      "filter": [
-        "!=",
-        "network",
-        "entrance"
-      ],
-      "layout": {
-        "icon-image": "{maki}-11",
-        "text-font": [
-          "Open_Sans_Semibold"
-        ],
-        "text-field": "{name_fr}",
-        "text-max-width": 9,
-        "text-padding": 2,
-        "text-offset": [
-          0,
-          0.6
-        ],
-        "text-anchor": "top",
-        "text-size": 12
-      },
-      "paint": {
-        "text-color": "hsla(231, 57%, 54%, 1)",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1,
-        "text-halo-blur": 0.5
-      }
-    },
-    {
       "id": "place_label_city_Paris",
       "type": "symbol",
       "metadata": {
@@ -680,44 +651,6 @@
             ]
           ]
         }
-      },
-      "paint": {
-        "text-color": "hsla(0, 0%, 4%, 1)",
-        "text-halo-color": "#FFFFFF",
-        "text-halo-width": 1.2
-      }
-    },
-    {
-      "id": "place_label_town",
-      "type": "symbol",
-      "source": "composite",
-      "source-layer": "place_label",
-      "minzoom": 7,
-      "filter": [
-        "in",
-        "type",
-        "town"
-      ],
-      "layout": {
-        "text-font": [
-          "Open_Sans_Semibold"
-        ],
-        "text-field": "{name_fr}",
-        "text-max-width": 8,
-        "text-size": {
-          "base": 1.2,
-          "stops": [
-            [
-              10,
-              14
-            ],
-            [
-              15,
-              22
-            ]
-          ]
-        },
-        "text-letter-spacing": 0.025
       },
       "paint": {
         "text-color": "hsla(0, 0%, 4%, 1)",
@@ -778,6 +711,44 @@
       }
     },
     {
+      "id": "place_label_town",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "place_label",
+      "minzoom": 7,
+      "filter": [
+        "in",
+        "type",
+        "town"
+      ],
+      "layout": {
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 8,
+        "text-size": {
+          "base": 1.2,
+          "stops": [
+            [
+              10,
+              14
+            ],
+            [
+              15,
+              22
+            ]
+          ]
+        },
+        "text-letter-spacing": 0.025
+      },
+      "paint": {
+        "text-color": "hsla(0, 0%, 4%, 1)",
+        "text-halo-color": "#FFFFFF",
+        "text-halo-width": 1.2
+      }
+    },
+    {
       "id": "ffbb_transport",
       "type": "symbol",
       "source": "composite",
@@ -823,6 +794,39 @@
         "text-halo-blur": 0.5,
         "icon-color": "hsla(231, 57%, 54%, 1)",
         "text-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "ffbb_railstation",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "rail_station_label",
+      "filter": [
+        "!=",
+        "network",
+        "entrance"
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12,
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsla(231, 57%, 54%, 1)",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0.5
       }
     },
     {
@@ -936,6 +940,20 @@
         "text-halo-color": "#ffffff",
         "text-halo-width": 1,
         "text-halo-blur": 0
+      }
+    },
+    {
+      "id": "3d building",
+      "type": "fill-extrusion",
+      "source": "composite",
+      "source-layer": "building",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "fill-extrusion-height": 10,
+        "fill-extrusion-color": "hsla(34, 0%, 79%, 1)",
+        "fill-extrusion-vertical-gradient": false
       }
     }
   ],
