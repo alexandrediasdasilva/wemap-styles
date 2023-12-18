@@ -826,7 +826,7 @@
       }
     },
     {
-      "id": "ffbb_amenities",
+      "id": "ffbb_sport_amenities",
       "type": "symbol",
       "source": "composite",
       "source-layer": "poi_label",
@@ -838,7 +838,82 @@
           "type",
           "Stadium",
           "Sports Centre",
-          "Pitch"
+          "Pitch",
+          "Monument",
+          "Park"
+        ]
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "hsla(100, 45%, 37%, 1)",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0
+      }
+    },
+    {
+      "id": "ffbb_parks",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "poi_label",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "Park"
+        ]
+      ],
+      "layout": {
+        "icon-image": "{maki}-11",
+        "text-font": [
+          "Open_Sans_Semibold"
+        ],
+        "text-field": "{name_fr}",
+        "text-max-width": 9,
+        "text-padding": 2,
+        "text-offset": [
+          0,
+          0.6
+        ],
+        "text-anchor": "top",
+        "text-size": 12
+      },
+      "paint": {
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1,
+        "text-halo-blur": 0,
+        "text-color": "#969595"
+      }
+    },
+    {
+      "id": "ffbb_key_pois",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "poi_label",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "Public Building",
+          "Monument"
         ]
       ],
       "layout": {
