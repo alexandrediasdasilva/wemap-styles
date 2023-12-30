@@ -1,0 +1,101 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": {"maputnik:renderer": "mbgljs"},
+  "sources": {
+    "ocean": {
+      "type": "geojson",
+      "data": "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_ocean.geojson"
+    },
+    "populated_places": {
+      "type": "geojson",
+      "data": "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places_simple.geojson"
+    },
+    "arceaux": {
+      "type": "geojson",
+      "data": "https://www.alexdias.fr/wemap/geojson/OSM_Metropole_parking_velo.geojson"
+    },
+    "osm": {
+      "type": "vector",
+      "url": "https://vector.getwemap.com/data/osm2vectortiles.json"
+    },
+    "regions": {
+      "type": "geojson",
+      "data": "https://france-geojson.gregoiredavid.fr/repo/regions.geojson"
+    },
+    "tram": {
+      "type": "geojson",
+      "data": "https://www.alexdias.fr/wemap/geojson/MMM_MMM_LigneTram.geojson"
+    }
+  },
+  "sprite": "https://vector.getwemap.com/styles/wemap-v1-fr/sprite",
+  "glyphs": "https://orangemug.github.io/font-glyphs-v2/glyphs/{fontstack}/{range}.pbf",
+  "transition": {"delay": 50, "duration": 300},
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "layout": {"visibility": "visible"},
+      "paint": {"background-color": "rgba(233, 233, 233, 1)"}
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "water",
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-color": "rgba(193, 195, 216, 1)"}
+    },
+    {
+      "id": "road",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "road",
+      "paint": {"line-color": "rgba(147, 147, 147, 1)"}
+    },
+    {
+      "id": "arceaux",
+      "type": "symbol",
+      "source": "arceaux",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "layout": {"text-field": "", "icon-image": "parking-11"}
+    },
+    {
+      "id": "places",
+      "type": "symbol",
+      "source": "populated_places",
+      "minzoom": 0,
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 16,
+        "symbol-placement": "point",
+        "symbol-z-order": "auto",
+        "text-font": ["Open Sans Semibold"],
+        "visibility": "visible"
+      },
+      "paint": {"text-color": "rgba(0, 0, 0, 1)"}
+    },
+    {
+      "id": "regions",
+      "type": "line",
+      "source": "regions",
+      "paint": {"line-color": "rgba(255, 0, 0, 0.17)"}
+    },
+    {
+      "id": "tram 2",
+      "type": "line",
+      "source": "tram",
+      "filter": ["all", ["==", "num_exploitation", 2]],
+      "paint": {"line-color": "#EF7D00", "line-width": 2}
+    },
+    {
+      "id": "tram 3",
+      "type": "line",
+      "source": "tram",
+      "filter": ["all", ["==", "num_exploitation", 3]],
+      "paint": {"line-color": "#C8D400"}
+    }
+  ],
+  "id": "h6yao4ir1"
+}
