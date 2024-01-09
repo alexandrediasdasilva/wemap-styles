@@ -1,0 +1,12 @@
+{
+  "version": 8,
+  "name": "Musée du Louvre",
+  "metadata": {
+    "maputnik:renderer": "mbgljs"
+  },
+  "sources": {},
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [],
+  "id": "uumdki9w6"
+}
