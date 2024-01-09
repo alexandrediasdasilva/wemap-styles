@@ -1,0 +1,27 @@
+# Usual command
+./maputnik --watch --file louvre/louvre-style.json
+
+# Doc
+- https://github.com/maputnik/editor/wiki
+- https://github.com/maputnik/editor/wiki/Maputnik-CLI
+
+# All commands
+Simply start up a web server and access the Maputnik editor GUI at localhost:8000.
+
+```
+maputnik
+```
+Expose a local style file to Maputnik allowing the web based editor to save to the local filesystem.
+
+```
+maputnik --file basic-v9.json
+```
+
+Watch the local style for changes and inform the editor via web socket. This makes it possible to edit the style with a local text editor and still use Maputnik.
+
+```
+maputnik --watch --file basic-v9.json
+```
+
+
+
