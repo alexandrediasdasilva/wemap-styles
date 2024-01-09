@@ -1,12 +1,251 @@
 {
   "version": 8,
-  "name": "Musée du Louvre",
+  "name": "Empty Style",
   "metadata": {
     "maputnik:renderer": "mbgljs"
   },
-  "sources": {},
-  "sprite": "",
-  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
-  "layers": [],
-  "id": "uumdki9w6"
+  "sources": {
+    "osm": {
+      "type": "vector",
+      "url": "https://vector.getwemap.com/data/osm2vectortiles.json"
+    },
+    "regions": {
+      "type": "geojson",
+      "data": "https://france-geojson.gregoiredavid.fr/repo/regions.geojson"
+    },
+    "land": {
+      "type": "geojson",
+      "data": "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_land.geojson"
+    }
+  },
+  "sprite": "https://vector.getwemap.com/styles/wemap-v1-fr/sprite",
+  "glyphs": "https://www.alexdias.fr/wemap/fonts/{fontstack}/{range}.pbf",
+  "transition": {
+    "delay": 50,
+    "duration": 300
+  },
+  "layers": [
+    {
+      "id": "buildings",
+      "type": "fill-extrusion",
+      "source": "osm",
+      "source-layer": "building",
+      "minzoom": 0,
+      "paint": {
+        "fill-extrusion-color": "#BDB2AD",
+        "fill-extrusion-height": 30
+      }
+    },
+    {
+      "id": "land extrusion",
+      "type": "fill-extrusion",
+      "source": "land",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-extrusion-color": "#BDB2AD",
+        "fill-extrusion-height": 100,
+        "fill-extrusion-base": 10,
+        "fill-extrusion-vertical-gradient": true,
+        "fill-extrusion-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "water",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#F1EBE7",
+        "fill-antialias": false
+      }
+    },
+    {
+      "id": "land",
+      "type": "fill",
+      "source": "land",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#FFFFFF"
+      }
+    },
+    {
+      "id": "land stroke",
+      "type": "line",
+      "source": "land",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "#DDD9D6"
+      }
+    },
+    {
+      "id": "road",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "road",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "#BDB2AD"
+      }
+    },
+    {
+      "id": "background",
+      "type": "background",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "background-color": "rgba(163, 68, 68, 1)"
+      }
+    },
+    {
+      "id": "streets",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "in",
+          "class",
+          "street"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#9B8B82",
+        "line-width": 1,
+        "line-opacity": 0.5
+      }
+    },
+    {
+      "id": "secondary roads",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "road",
+      "minzoom": 6,
+      "filter": [
+        "all",
+        [
+          "in",
+          "class",
+          "secondary"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#9B8B82",
+        "line-width": 1,
+        "line-opacity": {
+          "stops": [
+            [
+              8,
+              0.25
+            ],
+            [
+              10,
+              0.5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "primary roads",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        [
+          "in",
+          "class",
+          "primary"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "#9B8B82",
+        "line-width": {
+          "stops": [
+            [
+              6,
+              0.25
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              12,
+              2
+            ]
+          ]
+        },
+        "line-opacity": {
+          "stops": [
+            [
+              6,
+              0.5
+            ],
+            [
+              8,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "places",
+      "type": "symbol",
+      "source": "osm",
+      "source-layer": "place_label",
+      "minzoom": 0,
+      "layout": {
+        "text-field": "{name_fr}",
+        "text-size": 18,
+        "symbol-placement": "point",
+        "symbol-z-order": "auto",
+        "text-font": [
+          "EB Garamond Medium"
+        ],
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgba(134, 119, 117, 1)",
+        "text-halo-color": "#fff",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "regions",
+      "type": "line",
+      "source": "osm",
+      "source-layer": "road",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "rgba(255, 0, 0, 0.17)"
+      }
+    }
+  ],
+  "id": "h6yao4ir1"
 }
